@@ -66,6 +66,56 @@ Na aba Exibição, habilitei as opções:
 
 
 
+Para a tabela de veículos emplacados foi necessário realizar o tratamento nas colunas MODELO e QTDE:
+
+![image](https://github.com/user-attachments/assets/07b9fe87-0ffc-4a6f-a564-87661e81aee3)
+
+Para a coluna MODELO removi os valores vazios:
+
+![image](https://github.com/user-attachments/assets/8e1c2abc-3dda-4ca3-bc5c-573eb625438b)
+
+
+Para a coluna QTDE teve um problema na hora designar a tipagem para número inteiro, pois nessa coluna tem algumas linhas que quando não há quantidade está como "-", para isso fiz o replace de erros por 0, indicando que há um total de zero veículos emplacadados para a linha em específico:
+
+![image](https://github.com/user-attachments/assets/acecbd63-7085-4ac8-84e6-c4491a56350a)
+
+![image](https://github.com/user-attachments/assets/59524b4e-1458-4c81-a4ba-3949a9b442f7)
+
+
+A coluna MÊS estava tipada como texto, mas precisei converter para o tipo data. Para isso, eu não pude simplemente mudar para data tendo em vista que o Power Query teve dificuldade em interpretar esse formato de dado. Foi necessário criar um código na linguagem M do Power Query e adicionar uma coluna personalizada, o código funcionaria da seguinte forma:
+```M
+= try
+    (if [MÊS] = "janeiro/2020" then "01/2020" else
+    if [MÊS] = "fevereiro/2020" then "02/2020" else
+    if [MÊS] = "março/2020" then "03/2020" else null) otherwise null
+```
+
+Baseado na data contida na coluna MÊS, gerar um valor correspondente mas com o mês em formato numérico. Considerando que as datas nessa tabela vão desde janeiro/2020 até dezembro/2024, pedi para o llama3, que é uma LLM da Meta que roda localmente na minha máquina gerar o script completo:
+
+![image](https://github.com/user-attachments/assets/24b2b77c-8206-4c60-b71d-f2d92dc18f95)
+
+Tendo o script, fiz o seguintes passos:
+
+Adicionar Coluna > Coluna Personalizada
+
+![image](https://github.com/user-attachments/assets/2857c696-6f6f-4375-a85b-ab1fd7381045)
+
+Dei um nome para a nova coluna, colei o código M, e por último cliquei em OK:
+
+![image](https://github.com/user-attachments/assets/c3569014-0dfc-4d5d-a0e5-7e58fabf6eb2)
+
+Depois disso, alterei de formato alfanumérico para data:
+![image](https://github.com/user-attachments/assets/7c09e18d-d07e-4c05-b85d-f67ebbf4dcc9)
+
+
+![image](https://github.com/user-attachments/assets/8fcd818b-a721-4154-a755-b90884f0360d)
+
+
+
+
+
+
+
 ![image](https://github.com/user-attachments/assets/e3536451-c374-4ff7-93a5-31a9c7dee403)
 
 
