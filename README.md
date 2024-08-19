@@ -64,7 +64,29 @@ Na aba Exibição, habilitei as opções:
 
 ![image](https://github.com/user-attachments/assets/1779bda0-6717-4e2d-aaf3-fe42abd24bc3)
 
+Verifiquei a tipagem realizada pelo Power Query, e está correta:
 
+```M
+= Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Source_File", type text}, {"Source_File_Date", type date}, {"Core Nameplate Region Mnemonic", Int64.Type}, {"Core Nameplate Plant Mnemonic", Int64.Type}, {"Mnemonic-Vehicle", Int64.Type}, {"Mnemonic-Vehicle/Plant", Int64.Type}, {"Mnemonic-Platform", Int64.Type}, {"Region", type text}, {"Market", type text}, {"Country/Territory", type text}, {"Production Plant", type text}, {"City", type text}, {"Plant State/Province", type text}, {"Source Plant", type text}, {"Source Plant Country/Territory", type text}, {"Source Plant Region", type text}, {"Design Parent", type text}, {"Engineering Group", type text}, {"Manufacturer Group", type text}, {"Manufacturer", type text}, {"Sales Parent", type text}, {"Production Brand", type text}, {"Platform Design Owner", type text}, {"Architecture", type text}, {"Platform", type text}, {"Program", type text}, {"Production Nameplate", type text}, {"SOP (Start of Production)", type date}, {"EOP (End of Production)", type date}, {"Lifecycle (Time)", Int64.Type}, {"Vehicle", type text}, {"Assembly Type", type text}, {"Strategic Group", type text}, {"Sales Group", type text}, {"Global Nameplate", type text}, {"Primary Design Center", type text}, {"Primary Design Country/Territory", type text}, {"Primary Design Region", type text}, {"Secondary Design Center", type text}, {"Secondary Design Country/Territory", type text}, {"Secondary Design Region", type text}, {"GVW Rating", type text}, {"GVW Class", type text}, {"Car/Truck", type text}, {"Production Type", type text}, {"Global Production Segment", type text}, {"Regional Sales Segment", type text}, {"Global Production Price Class", type text}, {"Global Sales Segment", type text}, {"Global Sales Sub-Segment", type text}, {"Global Sales Price Class", Int64.Type}, {"Short-Term Risk Rating", Int64.Type}, {"Long-Term Risk Rating", Int64.Type}, {"Region-2", type text}, {"Market-2", type text}, {"Country-2", type text}, {"Date_Ref", type date}, {"Monthly_Qty", Int64.Type}})
+```
+
+Removi as colunas Source_File e Source_File_Date, pois representam o nome do report e data de extração, o que não tem valor algum para a análise:
+```m
+= Table.RemoveColumns(#"Tipo Alterado",{"Source_File", "Source_File_Date"})
+```
+
+Adicionei uma coluna customizada chamada Vehicle Name, que representa a concatenação de outras duas colunas, Production Brand e Global Nameplate:
+```m
+= Table.AddColumn(#"Colunas Removidas", "Vehicle Name", each [Production Brand] & " " & [Global Nameplate])
+```
+
+![image](https://github.com/user-attachments/assets/fcc9eeec-be3f-4330-b396-fb78466d4ecd)
+
+
+Adicionei uma coluna customizada chamada Status, que irá conter o valor "Produced" em todas a linhas:
+```m
+= Table.AddColumn(#"Personalização Adicionada", "Status", each "Produced", type text)
+```
 
 Para a tabela de veículos emplacados foi necessário realizar o tratamento nas colunas MODELO e QTDE:
 
