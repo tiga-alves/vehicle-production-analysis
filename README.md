@@ -178,7 +178,7 @@ Resumo das etapas aplicadas:
 
 ### Tabela calendário
 
-Para realizar análise temporal, foi necessário criar uma tabela calendário e dois eu relacionei a tabela calendário com as outras tabelas através do Power Pivot.
+Para realizar a análise temporal, foi necessário criar uma tabela de calendário. Em seguida, relacionei essa tabela com as demais tabelas usando o Power Pivot.
 
 Naveguei até Página Inicial > Nova Fonte> Outras Fontes > Consulta Nula
 
