@@ -6,7 +6,11 @@
 - [Dados Fornecidos](#dados-fornecidos)
 - [Ferramentas](#ferramentas)
 - [Preparação Inicial](#preparacao-inicial)
-- 
+- [Importação dos dados](#importacao-dos-dados)
+- [Tabela de veículos produzidos](#tabela-de-veiculos-produzidos)
+- [Tabela de veículos emplacados](#tabela-de-veiculos-emplacados)
+- [Tabela de veículos a serem produzidos](#tabela-de-veiculos-a-serem-produzidos)
+- [Tabela calendário](#tabela-calendario)
 
 ### Objetivo
 
@@ -32,7 +36,7 @@ Para as fases de preparação inicial, foram realizadas as seguintes tarefas:
 1. Importação e inspeção dos dados: Adquirir e revisar os dados para garantir sua integridade e relevância.
 2. Limpeza e transformação dos dados: Preparar os dados para análise, eliminando inconsistências e aplicando as transformações necessárias.
 
-### Processo de importação dos dados
+### Importação dos dados
 Criei uma nova planilha no Excel e realizei a importação das três fontes de dados da seguinte maneira:
 Naveguei até Dados > Obter Dados > De Arquivo > Do Excel Pasta de Trabalho.
 
@@ -175,24 +179,3 @@ Resumo das etapas aplicadas:
 ### Tabela calendário
 
 
-### Análise Exploratória dos Dados
-
-
-### Data Analysis
-
-
-
-### Resultados/Descobertas
-
-
-
-### Recomendações
-
-
-### Limitações
-
-
-### Referencias
-
-1. SQL for Businesses by Werty.
-2. [Stack Overflow](https://stack.com)
