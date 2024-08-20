@@ -178,4 +178,37 @@ Resumo das etapas aplicadas:
 
 ### Tabela calendário
 
+Para realizar análise temporal, foi necessário criar uma tabela calendário e dois eu relacionei a tabela calendário com as outras tabelas através do Power Pivot.
+
+Naveguei até Página Inicial > Nova Fonte> Outras Fontes > Consulta Nula
+
+![image](https://github.com/user-attachments/assets/21e71df9-7af4-47a0-952c-87eed2343ced)
+
+Naveguei até a barra de formulas e digitei o seguinte código M e dei um Enter:
+```m
+=#date(2020,1,1)
+```
+![image](https://github.com/user-attachments/assets/4690dfea-fd6d-4f46-a90f-e80f06cb236a)
+
+Depois cliquei para adicionar uma função:
+
+![image](https://github.com/user-attachments/assets/4a74238b-47e2-4a11-83d5-0be20515d520)
+
+E adicionei o seguinte código M:
+```m
+= List.Dates(
+	Fonte,
+	Number.From(DateTime.LocalNow()) - Number.From(Fonte),
+	#duration(1,0,0,0)
+)
+```
+
+Converti para tabela:
+
+![image](https://github.com/user-attachments/assets/7f20a0b7-dcc3-4426-b793-70245f9e00ea)
+
+Converti para o formato de data e a partir daqui eu posso adicionar novas colunas com informações como semana, mês, ano etc:
+
+![image](https://github.com/user-attachments/assets/82a8cf92-6432-41fc-a7f6-5ac506f993ef)
+
 
